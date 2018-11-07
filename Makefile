@@ -1,19 +1,19 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=vlmcsd
-PKG_VERSION=svn1111
-PKG_RELEASE:=1
+PKG_VERSION=svn1112
+PKG_RELEASE:=2018-10-20
 
-PKG_MAINTAINER:=fuyumi <280604399@qq.com>
+PKG_MAINTAINER:=siwind 
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/mchome/vlmcsd.git
-PKG_SOURCE_VERSION:=5f25150439817c2f74395089300972f11b2387f8
+PKG_SOURCE_URL:=https://github.com/Wind4/vlmcsd.git
+PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
+PKG_SOURCE_VERSION:=cd488aeb85aedefe1cb4db02c632397d78a9de88
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 
-PKG_SOURCE_SUBDIR:=$(PKG_NAME)
-PKG_SOURCE:=$(PKG_SOURCE_SUBDIR).tar.gz
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_SOURCE_SUBDIR)
 PKG_BUILD_PARALLEL:=1
 
@@ -27,8 +27,11 @@ define Package/vlmcsd
 	DEPENDS:=+libpthread
 endef
 
+MAKE_FLAGS += \
+	VLMCSD_VERSION="$(PKG_VERSION)" 
+
 define Package/vlmcsd/description
-	vlmcsd is a KMS Emulator in C.
+	vlmcsd for openwrt-$(BOARD)
 endef
 
 MAKE_FLAGS += \

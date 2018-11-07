@@ -1,11 +1,50 @@
 # openwrt-vlmcsd
-a package for vlmcsd
+vlmcsd package for OpenWrt envirement
 
+
+# How to build
+first, download OpenWrt SDK archive files, then extract it, and go into the extracted directory.
 ```
-PS:
-1. srv-host=_vlmcs._tcp.lan,openwrt.lan,1688,0,100 添加到 /etc/dnsmasq.conf .
-2. /etc/init.d/vlmcsd enable && /etc/init.d/vlmcsd start && /etc/init.d/dnsmasq restart
-3. OK, 你的路由器下应该可以自动激活Windows或者Office了 :)
+$ tar xf openwrt-sdk-18.06.1-xxx.Linux-x86_64.tar.gz
+$ cd openwrt-sdk-18.06.1-xxx.Linux-x86_64
 ```
 
-配套luci: [luci-app-vlmcsd](https://github.com/mchome/luci-app-vlmcsd "")
+second, git clone this repository to the Openwrt SDK's package directory
+```
+$ git clone https://github.com/siwind/openwrt-vlmcsd package/vlmcsd
+$ make package/vlmcsd/compile V=s
+```
+
+third, when build process successfully finished, the vlmcsd_xxx.ipk will be in bin/package directory.
+
+# Installation on OpenWrt
+upload the ipk file to openwrt system, then install it.
+```
+# opkg update
+# opkg install vlmcsd.ipk
+```
+
+# Configuration 
+add the following line to the end of dnsmasq.conf
+```
+# cat /etc/dnsmasq.conf
+localise-queries
+bogus-priv
+expand-hosts
+srv-host=_vlmcs._tcp.lan,OpenWrt.lan,1688,0,100
+```
+
+add this lines to /etc/hosts
+```
+192.168.0.1        OpenWrt    OpenWrt.lan      //with your proper IP address
+```
+
+restart service:
+```
+/etc/init.d/vlmcsd enable && /etc/init.d/vlmcsd start && /etc/init.d/dnsmasq restart
+```
+
+# Luci Web UI
+See here: [luci-app-vlmcsd](https://github.com/siwind/luci-app-vlmcsd.git "")
+
+
