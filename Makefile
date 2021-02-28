@@ -9,7 +9,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/Wind4/vlmcsd.git
+PKG_SOURCE_URL:=git://git.timeflagship.cn/Openwrt/vlmcsd.git
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 PKG_SOURCE_VERSION:=65228e5c7916acd947ffb53be18abadafbc1be56
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
