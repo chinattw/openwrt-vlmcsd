@@ -9,6 +9,7 @@ PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_SOURCE_PROTO:=git
+#将https://github.com/Wind4/vlmcsd.git修改为本地路径，其它人勿用
 PKG_SOURCE_URL:=git://git.timeflagship.cn/Openwrt/vlmcsd.git
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 PKG_SOURCE_VERSION:=65228e5c7916acd947ffb53be18abadafbc1be56
